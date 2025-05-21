@@ -6,4 +6,6 @@ import com.thalyshenrique7.rabbitguard.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
+	User findByUsername(String username);
+
 }
