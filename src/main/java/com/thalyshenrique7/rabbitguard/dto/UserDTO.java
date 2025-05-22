@@ -61,4 +61,10 @@ public class UserDTO {
 		this.role = role;
 	}
 
+	@Override
+	public String toString() {
+		return "UserDTO [email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
+				+ username + ", role=" + role + "]";
+	}
+
 }

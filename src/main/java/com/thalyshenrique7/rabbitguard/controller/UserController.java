@@ -9,19 +9,19 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.thalyshenrique7.rabbitguard.dto.UserDTO;
-import com.thalyshenrique7.rabbitguard.service.UserServiceImpl;
+import com.thalyshenrique7.rabbitguard.producer.UserProducer;
 
 @RestController
 @RequestMapping(value = "/api/user", produces = org.springframework.http.MediaType.APPLICATION_JSON_VALUE)
 public class UserController {
 
 	@Autowired
-	private UserServiceImpl userService;
+	private UserProducer userProducer;
 
 	@PostMapping
-	@ResponseStatus(HttpStatus.CREATED)
+	@ResponseStatus(HttpStatus.ACCEPTED)
 	public void save(@RequestBody UserDTO dto) {
 
-		this.userService.saveUser(dto);
+		this.userProducer.sendUser(dto);
 	}
 }
