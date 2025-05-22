@@ -1,5 +1,7 @@
 package com.thalyshenrique7.rabbitguard.dto;
 
+import com.thalyshenrique7.rabbitguard.enums.Role;
+
 public class UserDTO {
 
 	private Long id;
@@ -8,6 +10,8 @@ public class UserDTO {
 	private String firstName;
 	private String lastName;
 	private String username;
+
+	private Role role;
 
 	public Long getId() {
 		return id;
@@ -47,6 +51,14 @@ public class UserDTO {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 }

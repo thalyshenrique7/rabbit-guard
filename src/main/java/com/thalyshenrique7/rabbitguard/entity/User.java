@@ -2,7 +2,9 @@ package com.thalyshenrique7.rabbitguard.entity;
 
 import java.util.Calendar;
 
+import com.thalyshenrique7.rabbitguard.enums.Role;
 import com.thalyshenrique7.rabbitguard.enums.Status;
+import com.thalyshenrique7.rabbitguard.utils.StringUtils;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,6 +18,7 @@ import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.Email;
 
 @Entity
 @Table(name = "rabbit_guard_user")
@@ -25,6 +28,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Email
 	@Column(unique = true, nullable = false)
 	private String email;
 
@@ -49,6 +53,9 @@ public class User {
 
 	@Column(unique = true, nullable = false)
 	private String username;
+
+	@Enumerated(EnumType.STRING)
+	private Role role;
 
 	public Long getId() {
 		return id;
@@ -101,7 +108,8 @@ public class User {
 	}
 
 	public String getFirstName() {
-		return firstName;
+
+		return StringUtils.safeString(firstName);
 	}
 
 	public void setFirstName(String firstName) {
@@ -109,7 +117,7 @@ public class User {
 	}
 
 	public String getLastName() {
-		return lastName;
+		return StringUtils.safeString(lastName);
 	}
 
 	public void setLastName(String lastName) {
@@ -144,6 +152,14 @@ public class User {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 }

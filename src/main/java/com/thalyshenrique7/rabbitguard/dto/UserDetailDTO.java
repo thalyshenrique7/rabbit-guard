@@ -1,5 +1,6 @@
 package com.thalyshenrique7.rabbitguard.dto;
 
+import com.thalyshenrique7.rabbitguard.enums.Role;
 import com.thalyshenrique7.rabbitguard.enums.Status;
 
 public class UserDetailDTO {
@@ -12,6 +13,7 @@ public class UserDetailDTO {
 	private String username;
 
 	private Status status;
+	private Role role;
 
 	public String getEmail() {
 		return email;
@@ -67,6 +69,14 @@ public class UserDetailDTO {
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 }
